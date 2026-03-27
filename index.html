@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingrid Eloy | Nutricionista Cl&iacute;nica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marfim: #FAF7F2;
+      --verde-escuro: #2D4A2D;
+      --verde-medio: #4A7C59;
+      --verde-claro: #EEF5EE;
+      --verde-accent: #6B9B6B;
+      --texto: #3A3028;
+      --texto-suave: #7A6A5A;
+      --bege-quente: #F3EFE8;
+      --dourado: #C9A84C;
+      --dourado-suave: #FFF8EE;
+      --borda: #D5CDBE;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--marfim);
+      color: var(--texto);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 28px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--verde-escuro), var(--verde-medio), var(--verde-accent));
+      z-index: 2;
+    }
+
+    .hero-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .hero-marca,
+    .hero h1,
+    .hero-sub,
+    .hero-cta,
+    .hero-scroll {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-marca {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--verde-escuro);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--verde-medio);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--texto-suave);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--verde-escuro);
+      color: var(--marfim);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 18px 36px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .hero-cta:hover { background: var(--verde-medio); transform: translateY(-2px); }
+
+    .hero-cta svg { width: 18px; height: 18px; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    .hero-scroll svg {
+      width: 24px; height: 24px;
+      color: var(--borda);
+      animation: bounce 2s infinite;
+    }
+
+    /* ==================== SINTOMAS ==================== */
+    .sintomas {
+      padding: 64px 28px;
+      background: var(--verde-claro);
+      position: relative;
+    }
+
+    .sintomas::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--verde-accent), transparent);
+    }
+
+    .section-label {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      margin-bottom: 16px;
+    }
+
+    .sintomas h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--verde-escuro);
+      margin-bottom: 32px;
+    }
+
+    .sintoma-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(45,74,45,0.1);
+    }
+
+    .sintoma-item:last-child { border-bottom: none; }
+
+    .sintoma-check {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--verde-medio);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      transition: all 0.3s;
+    }
+
+    .sintoma-check svg {
+      width: 14px; height: 14px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .sintoma-item.checked .sintoma-check {
+      background: var(--verde-medio);
+      border-color: var(--verde-medio);
+    }
+
+    .sintoma-item.checked .sintoma-check svg { opacity: 1; }
+
+    .sintoma-texto {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--texto);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .sintomas-resultado {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: var(--dourado-suave);
+      border-left: 3px solid var(--dourado);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #6B5A2E;
+      line-height: 1.6;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
+
+    .sintomas-resultado.visivel {
+      opacity: 1;
+      max-height: 200px;
+      margin-top: 28px;
+    }
+
+    .sintomas-resultado strong { color: #5A4A1E; }
+
+    /* ==================== DIFERENCIAL ==================== */
+    .diferencial {
+      padding: 64px 28px;
+    }
+
+    .diferencial h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--verde-escuro);
+      margin-bottom: 12px;
+    }
+
+    .diferencial-intro {
+      font-size: 1rem;
+      color: var(--texto-suave);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .dif-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(213,205,190,0.5);
+      transition: transform 0.3s;
+    }
+
+    .dif-card:active { transform: scale(0.98); }
+
+    .dif-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--verde-claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .dif-icon svg { width: 22px; height: 22px; color: var(--verde-medio); }
+
+    .dif-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+    }
+
+    .dif-card p {
+      font-size: 0.92rem;
+      color: var(--texto-suave);
+      line-height: 1.65;
+    }
+
+    /* ==================== COMO FUNCIONA ==================== */
+    .como-funciona {
+      padding: 64px 28px;
+      background: var(--verde-escuro);
+      color: var(--marfim);
+      position: relative;
+    }
+
+    .como-funciona .section-label { color: var(--verde-accent); }
+
+    .como-funciona h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--marfim);
+      margin-bottom: 36px;
+    }
+
+    .passo {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+
+    .passo-num {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--verde-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--verde-accent);
+    }
+
+    .passo h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--marfim);
+      margin-bottom: 6px;
+    }
+
+    .passo p {
+      font-size: 0.92rem;
+      color: rgba(245,240,232,0.75);
+      line-height: 1.65;
+    }
+
+    .linha-conectora {
+      width: 2px;
+      height: 24px;
+      background: rgba(107,155,107,0.3);
+      margin-left: 23px;
+      margin-bottom: 8px;
+    }
+
+    /* ==================== FORMULARIO ==================== */
+    .formulario {
+      padding: 64px 28px;
+      position: relative;
+    }
+
+    .formulario h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+    }
+
+    .formulario-intro {
+      font-size: 0.95rem;
+      color: var(--texto-suave);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .form-grupo {
+      margin-bottom: 22px;
+    }
+
+    .form-grupo label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-grupo input,
+    .form-grupo select,
+    .form-grupo textarea {
+      width: 100%;
+      padding: 16px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      color: var(--texto);
+      background: white;
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-grupo input:focus,
+    .form-grupo select:focus,
+    .form-grupo textarea:focus {
+      border-color: var(--verde-medio);
+      box-shadow: 0 0 0 3px rgba(74,124,89,0.12);
+    }
+
+    .form-grupo input::placeholder,
+    .form-grupo textarea::placeholder {
+      color: #B8ADA0;
+    }
+
+    .form-grupo select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A6A5A' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+    }
+
+    .form-grupo textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Checkboxes de sintomas no form */
+    .form-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: white;
+      border: 1.5px solid var(--borda);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .form-check:active { transform: scale(0.98); }
+
+    .form-check.selecionado {
+      border-color: var(--verde-medio);
+      background: var(--verde-claro);
+    }
+
+    .form-check input { display: none; }
+
+    .form-check-box {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      border: 2px solid var(--borda);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .form-check.selecionado .form-check-box {
+      background: var(--verde-medio);
+      border-color: var(--verde-medio);
+    }
+
+    .form-check-box svg {
+      width: 14px; height: 14px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .form-check.selecionado .form-check-box svg { opacity: 1; }
+
+    .form-check-texto {
+      font-size: 0.95rem;
+      color: var(--texto);
+      line-height: 1.4;
+    }
+
+    .btn-enviar {
+      width: 100%;
+      padding: 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--marfim);
+      background: var(--verde-escuro);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-enviar:hover { background: var(--verde-medio); }
+    .btn-enviar:active { transform: scale(0.98); }
+
+    .btn-enviar:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-enviar .spinner {
+      display: none;
+      width: 22px; height: 22px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+
+    .btn-enviar.enviando .btn-texto { display: none; }
+    .btn-enviar.enviando .spinner { display: block; }
+
+    .form-nota {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* ==================== CONFIRMACAO ==================== */
+    .confirmacao {
+      display: none;
+      padding: 64px 28px;
+      text-align: center;
+      min-height: 60svh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .confirmacao.visivel {
+      display: flex;
+    }
+
+    .conf-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--verde-claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: scaleIn 0.5s 0.2s forwards;
+      opacity: 0;
+    }
+
+    .conf-icon svg { width: 36px; height: 36px; color: var(--verde-medio); }
+
+    .confirmacao h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .confirmacao p {
+      font-size: 1rem;
+      color: var(--texto-suave);
+      line-height: 1.7;
+      max-width: 400px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.6s forwards;
+    }
+
+    .confirmacao .conf-nome {
+      font-weight: 700;
+      color: var(--verde-escuro);
+    }
+
+    /* ==================== RODAPE ==================== */
+    .rodape {
+      padding: 32px 28px;
+      text-align: center;
+      border-top: 1px solid var(--borda);
+    }
+
+    .rodape-marca {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 6px;
+    }
+
+    .rodape p {
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .fade-in.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==================== DESKTOP ==================== */
+    @media (min-width: 640px) {
+      html { font-size: 18px; }
+
+      .hero, .sintomas, .diferencial, .como-funciona, .formulario {
+        padding-left: 48px;
+        padding-right: 48px;
+      }
+
+      .hero h1 { font-size: 2.6rem; }
+      .sintomas h2, .diferencial h2, .como-funciona h2, .formulario h2 { font-size: 2rem; }
+    }
+
+    @media (min-width: 900px) {
+      .hero, .sintomas, .diferencial, .como-funciona, .formulario {
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-marca">Ingrid Eloy &middot; Nutricionista Cl&iacute;nica</div>
+
+    <h1>Voc&ecirc; j&aacute; fez tudo certo e&nbsp;mesmo&nbsp;assim <em>seu corpo n&atilde;o&nbsp;responde?</em></h1>
+
+    <p class="hero-sub">
+      O problema pode n&atilde;o ser o que voc&ecirc; come, mas o que o seu corpo faz com o que recebe. Isso tem nome, tem causa e tem solu&ccedil;&atilde;o.
+    </p>
+
+    <a href="#formulario" class="hero-cta">
+      Quero investigar
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 10l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ SINTOMAS ============ -->
+  <section class="sintomas">
+    <div class="section-label fade-in">Isso &eacute; para voc&ecirc;?</div>
+    <h2 class="fade-in">Esses sinais contam uma hist&oacute;ria sobre o seu metabolismo</h2>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Voc&ecirc; sente uma fome que n&atilde;o combina com o que comeu, como se o corpo n&atilde;o tivesse registrado a refei&ccedil;&atilde;o.</div>
+    </div>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Tem compuls&atilde;o por doce ou carboidrato, principalmente no fim do dia, e j&aacute; tentou resolver isso com disciplina, sem sucesso.</div>
+    </div>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Acorda cansada mesmo quando dorme o suficiente, e a energia cai no meio da tarde de um jeito que s&oacute; caf&eacute; segura.</div>
+    </div>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Sua barriga n&atilde;o responde a nada do que voc&ecirc; faz: nem dieta, nem treino, nem redu&ccedil;&atilde;o de caloria.</div>
+    </div>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">J&aacute; fez low carb, jejum, contagem de calorias, e funcionou por um tempo, at&eacute; que parou de funcionar.</div>
+    </div>
+
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Toma medicamento para ansiedade ou tireoide, e ningu&eacute;m nunca olhou como isso afeta a sua fome e o seu peso.</div>
+    </div>
+
+    <div class="sintomas-resultado" id="sintomasResultado">
+      Esses sintomas n&atilde;o s&atilde;o falhas suas. S&atilde;o sinais de um metabolismo que perdeu flexibilidade, e &eacute; exatamente isso que eu investigo na consulta.
+    </div>
+  </section>
+
+  <!-- ============ DIFERENCIAL ============ -->
+  <section class="diferencial">
+    <div class="section-label fade-in">O que eu fa&ccedil;o diferente</div>
+    <h2 class="fade-in">O que eu fa&ccedil;o n&atilde;o &eacute; prescrever dieta</h2>
+    <p class="diferencial-intro fade-in">
+      Eu preciso entender por que o seu metabolismo travou antes de decidir o que voc&ecirc; deve colocar no prato.
+    </p>
+
+    <div class="dif-card fade-in">
+      <div class="dif-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <h3>Eu leio o contexto inteiro, n&atilde;o s&oacute; o exame</h3>
+      <p>Seus exames contam uma parte da hist&oacute;ria, seus sintomas contam outra, e o seu medicamento, o seu sono, a sua fase do ciclo e o seu hist&oacute;rico de dietas contam o resto. Eu junto tudo isso antes de tomar qualquer decis&atilde;o sobre a sua alimenta&ccedil;&atilde;o.</p>
+    </div>
+
+    <div class="dif-card fade-in">
+      <div class="dif-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      </div>
+      <h3>A mesma estrat&eacute;gia pode ajudar ou atrapalhar</h3>
+      <p>Existe fase para simplificar e fase para expandir. N&atilde;o adianta colocar no prato um alimento que o seu intestino n&atilde;o vai absorver direito, ou que o seu f&iacute;gado n&atilde;o est&aacute; pronto para processar. O que define a conduta &eacute; onde o seu corpo est&aacute; agora, n&atilde;o uma regra fixa que vale para todo mundo.</p>
+    </div>
+
+    <div class="dif-card fade-in">
+      <div class="dif-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>O objetivo n&atilde;o &eacute; controle permanente</h3>
+      <p>Eu n&atilde;o quero que voc&ecirc; dependa de uma dieta para o resto da vida. Quero que o seu corpo volte a funcionar, a alternar entre combust&iacute;veis, a regular a fome sozinho. Isso se chama flexibilidade metab&oacute;lica, e &eacute; o ponto de chegada de todo o meu trabalho.</p>
+    </div>
+  </section>
+
+  <!-- ============ COMO FUNCIONA ============ -->
+  <section class="como-funciona">
+    <div class="section-label fade-in">Como funciona</div>
+    <h2 class="fade-in">Como a gente come&ccedil;a</h2>
+
+    <div class="passo fade-in">
+      <div class="passo-num">1</div>
+      <div>
+        <h3>Voc&ecirc; me conta o que est&aacute; sentindo</h3>
+        <p>Preencha o formul&aacute;rio abaixo com as suas queixas e o seu contato, porque isso me ajuda a entender o seu contexto antes mesmo de conversarmos.</p>
+      </div>
+    </div>
+    <div class="linha-conectora fade-in"></div>
+
+    <div class="passo fade-in">
+      <div class="passo-num">2</div>
+      <div>
+        <h3>Eu te chamo no WhatsApp</h3>
+        <p>Em at&eacute; 24 horas, eu vou te mandar uma mensagem. A gente conversa, eu tiro as suas d&uacute;vidas e, se fizer sentido para as duas, marcamos a consulta.</p>
+      </div>
+    </div>
+    <div class="linha-conectora fade-in"></div>
+
+    <div class="passo fade-in">
+      <div class="passo-num">3</div>
+      <div>
+        <h3>Consulta com racioc&iacute;nio cl&iacute;nico</h3>
+        <p>Na consulta, eu analiso os seus exames, avalio os seus sinais, identifico em que fase metab&oacute;lica voc&ecirc; est&aacute; e monto uma estrat&eacute;gia alimentar espec&iacute;fica para esse momento do seu corpo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORMULARIO ============ -->
+  <section class="formulario" id="formulario">
+    <div class="section-label fade-in">Pr&eacute;-agendamento</div>
+    <h2 class="fade-in">Vamos conversar sobre o seu caso</h2>
+    <p class="formulario-intro fade-in">
+      Preencha abaixo e eu te chamo no WhatsApp em at&eacute; 24 horas.
+    </p>
+
+    <form id="formMCM" onsubmit="enviarFormulario(event)">
+
+      <div class="form-grupo fade-in">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Como voc&ecirc; gostaria de ser chamada?" required>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label for="whatsapp">WhatsApp (com DDD)</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" name="idade" placeholder="Ex: 35" min="18" max="99" required>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label for="cidade">Cidade / Estado</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Ex: S&atilde;o Paulo / SP" required>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label>O que mais te incomoda hoje? <span style="font-weight:400;color:var(--texto-suave)">(pode marcar v&aacute;rios)</span></label>
+        <div class="form-checks" id="queixas">
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Compuls&atilde;o por doce ou carboidrato">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Compuls&atilde;o por doce ou carboidrato</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Fadiga e falta de energia">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Fadiga e falta de energia</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Barriga que n&atilde;o sai">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Barriga que n&atilde;o sai, independente de dieta</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Dietas pararam de funcionar">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Dietas que pararam de funcionar</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Fome descontrolada">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Fome descontrolada ou aus&ecirc;ncia de fome</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Ansiedade que piora alimenta&ccedil;&atilde;o">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Ansiedade que piora a alimenta&ccedil;&atilde;o</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="SOP ou resist&ecirc;ncia insul&iacute;nica">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">SOP ou resist&ecirc;ncia insul&iacute;nica</span>
+          </label>
+
+        </div>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label for="como">Como me encontrou?</label>
+        <select id="como" name="como">
+          <option value="" disabled selected>Selecione</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Indica&ccedil;&atilde;o">Indica&ccedil;&atilde;o de algu&eacute;m</option>
+          <option value="Google">Google</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="form-grupo fade-in">
+        <label for="obs">Quer me contar mais alguma coisa? <span style="font-weight:400;color:var(--texto-suave)">(opcional)</span></label>
+        <textarea id="obs" name="obs" placeholder="Conte aqui o que quiser sobre sua situa&ccedil;&atilde;o..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-enviar fade-in" id="btnEnviar">
+        <span class="btn-texto">Enviar e aguardar meu contato</span>
+        <div class="spinner"></div>
+      </button>
+
+      <p class="form-nota fade-in">Suas informa&ccedil;&otilde;es s&atilde;o confidenciais e ser&atilde;o usadas apenas para o nosso contato.</p>
+    </form>
+  </section>
+
+  <!-- ============ CONFIRMACAO ============ -->
+  <section class="confirmacao" id="confirmacao">
+    <div class="conf-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h2>Recebi, <span class="conf-nome" id="confNome"></span>!</h2>
+    <p>
+      Vou te chamar no WhatsApp em at&eacute; 24 horas para conversarmos sobre o seu caso. Fique de olho nas mensagens.
+    </p>
+  </section>
+
+  <!-- ============ RODAPE ============ -->
+  <section class="rodape">
+    <div class="rodape-marca">Ingrid Eloy</div>
+    <p>Nutricionista Cl&iacute;nica &middot; CRN 70332</p>
+  </section>
+
+  <script>
+    // ==================== SCROLL ANIMATIONS ====================
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visivel');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ==================== SINTOMAS INTERATIVOS ====================
+    function toggleSintoma(el) {
+      el.classList.toggle('checked');
+      var total = document.querySelectorAll('.sintoma-item.checked').length;
+      var resultado = document.getElementById('sintomasResultado');
+      if (total >= 2) {
+        resultado.classList.add('visivel');
+      } else {
+        resultado.classList.remove('visivel');
+      }
+    }
+
+    // ==================== FORM CHECKBOXES ====================
+    function toggleCheck(el) {
+      // Small delay to let the native checkbox toggle
+      setTimeout(function() {
+        var cb = el.querySelector('input[type="checkbox"]');
+        if (cb.checked) {
+          el.classList.add('selecionado');
+        } else {
+          el.classList.remove('selecionado');
+        }
+      }, 10);
+    }
+
+    // ==================== MASCARA WHATSAPP ====================
+    document.getElementById('whatsapp').addEventListener('input', function(e) {
+      var v = e.target.value.replace(/\D/g, '');
+      if (v.length > 11) v = v.slice(0, 11);
+      if (v.length > 6) {
+        v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+      } else if (v.length > 2) {
+        v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+      } else if (v.length > 0) {
+        v = '(' + v;
+      }
+      e.target.value = v;
+    });
+
+    // ==================== ENVIO DO FORMULARIO ====================
+    function enviarFormulario(e) {
+      e.preventDefault();
+
+      var btn = document.getElementById('btnEnviar');
+      btn.classList.add('enviando');
+      btn.disabled = true;
+
+      var nome = document.getElementById('nome').value.trim();
+      var whatsapp = document.getElementById('whatsapp').value.trim();
+      var idade = document.getElementById('idade').value;
+      var cidade = document.getElementById('cidade').value.trim();
+      var como = document.getElementById('como').value;
+      var obs = document.getElementById('obs').value.trim();
+
+      var queixas = [];
+      document.querySelectorAll('#queixas input[type="checkbox"]:checked').forEach(function(cb) {
+        queixas.push(cb.value);
+      });
+
+      var dados = {
+        nome: nome,
+        whatsapp: whatsapp,
+        idade: idade,
+        cidade: cidade,
+        queixas: queixas.join(', '),
+        como: como,
+        obs: obs,
+        data: new Date().toLocaleString('pt-BR')
+      };
+
+      // ========== GOOGLE SHEETS VIA APPS SCRIPT ==========
+      // Para ativar: crie uma planilha Google, va em Extensoes > Apps Script,
+      // cole o codigo abaixo e publique como Web App (acesso: qualquer pessoa).
+      // Depois substitua a URL abaixo pela URL do seu Web App.
+      //
+      // Codigo do Apps Script:
+      //
+      // function doPost(e) {
+      //   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      //   var dados = JSON.parse(e.postData.contents);
+      //   sheet.appendRow([
+      //     dados.data,
+      //     dados.nome,
+      //     dados.whatsapp,
+      //     dados.idade,
+      //     dados.cidade,
+      //     dados.queixas,
+      //     dados.como,
+      //     dados.obs
+      //   ]);
+      //   return ContentService.createTextOutput('ok');
+      // }
+
+      var SCRIPT_URL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT';
+
+      if (SCRIPT_URL === 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT') {
+        // Modo local: salva no localStorage enquanto o Google Sheets nao esta configurado
+        var leads = JSON.parse(localStorage.getItem('mcm_leads') || '[]');
+        leads.push(dados);
+        localStorage.setItem('mcm_leads', JSON.stringify(leads));
+        mostrarConfirmacao(nome);
+        return;
+      }
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      })
+      .then(function() {
+        mostrarConfirmacao(nome);
+      })
+      .catch(function() {
+        // Fallback: salva local se der erro
+        var leads = JSON.parse(localStorage.getItem('mcm_leads') || '[]');
+        leads.push(dados);
+        localStorage.setItem('mcm_leads', JSON.stringify(leads));
+        mostrarConfirmacao(nome);
+      });
+    }
+
+    function mostrarConfirmacao(nome) {
+      var primeiroNome = nome.split(' ')[0];
+      document.getElementById('confNome').textContent = primeiroNome;
+
+      document.getElementById('formMCM').style.display = 'none';
+      document.querySelector('.formulario .section-label').style.display = 'none';
+      document.querySelector('.formulario h2').style.display = 'none';
+      document.querySelector('.formulario-intro').style.display = 'none';
+
+      var conf = document.getElementById('confirmacao');
+      conf.classList.add('visivel');
+      conf.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ==================== HERO CANVAS: METABOLISMO VIVO ====================
+    (function() {
+      var canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, dpr;
+      var particles = [];
+      var connections = [];
+      var mitochondria = [];
+      var energyBursts = [];
+      var time = 0;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = canvas.parentElement.offsetWidth;
+        H = canvas.parentElement.offsetHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      // Partículas celulares flutuantes
+      function createParticles() {
+        particles = [];
+        var count = Math.floor(W * H / 12000);
+        if (count > 60) count = 60;
+        if (count < 20) count = 20;
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: 2 + Math.random() * 4,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            phase: Math.random() * Math.PI * 2,
+            pulse: 0.5 + Math.random() * 0.5,
+            type: Math.random() < 0.3 ? 'nutrient' : 'cell'
+          });
+        }
+      }
+
+      // Mitocôndrias (formas ovais maiores que pulsam)
+      function createMitochondria() {
+        mitochondria = [];
+        var count = Math.floor(W * H / 80000);
+        if (count < 2) count = 2;
+        if (count > 5) count = 5;
+        for (var i = 0; i < count; i++) {
+          mitochondria.push({
+            x: W * 0.3 + Math.random() * W * 0.5,
+            y: H * 0.2 + Math.random() * H * 0.6,
+            rx: 18 + Math.random() * 14,
+            ry: 10 + Math.random() * 8,
+            angle: Math.random() * Math.PI,
+            rotSpeed: (Math.random() - 0.5) * 0.003,
+            vx: (Math.random() - 0.5) * 0.15,
+            vy: (Math.random() - 0.5) * 0.15,
+            phase: Math.random() * Math.PI * 2,
+            innerFolds: 3 + Math.floor(Math.random() * 3)
+          });
+        }
+      }
+
+      function drawParticle(p, t) {
+        var pulseR = p.r + Math.sin(t * p.pulse + p.phase) * 1.2;
+        if (p.type === 'nutrient') {
+          // Pequenos pontos dourados (nutrientes sendo transportados)
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pulseR * 0.7, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(201,168,76,0.25)';
+          ctx.fill();
+          // Brilho interno
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pulseR * 0.3, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(201,168,76,0.4)';
+          ctx.fill();
+        } else {
+          // Células verdes suaves
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pulseR, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(74,124,89,0.12)';
+          ctx.fill();
+          // Membrana
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pulseR, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(74,124,89,0.18)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+          // Núcleo
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pulseR * 0.35, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(45,74,45,0.15)';
+          ctx.fill();
+        }
+      }
+
+      function drawMitochondria(m, t) {
+        ctx.save();
+        ctx.translate(m.x, m.y);
+        ctx.rotate(m.angle);
+
+        var pulse = 1 + Math.sin(t * 0.8 + m.phase) * 0.06;
+        var rx = m.rx * pulse;
+        var ry = m.ry * pulse;
+
+        // Membrana externa
+        ctx.beginPath();
+        ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(74,124,89,0.08)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(74,124,89,0.2)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Cristas internas (dobras da membrana interna)
+        ctx.strokeStyle = 'rgba(45,74,45,0.12)';
+        ctx.lineWidth = 1;
+        for (var i = 0; i < m.innerFolds; i++) {
+          var offset = (i - m.innerFolds / 2 + 0.5) * (rx * 0.4 / m.innerFolds * 2);
+          var foldHeight = ry * 0.55 + Math.sin(t * 0.5 + i + m.phase) * ry * 0.1;
+          ctx.beginPath();
+          ctx.moveTo(offset, -foldHeight);
+          ctx.quadraticCurveTo(offset + rx * 0.15, 0, offset, foldHeight);
+          ctx.stroke();
+        }
+
+        // Ponto de energia (ATP sendo gerado) - pulsa com luz dourada
+        var energyPulse = Math.sin(t * 1.5 + m.phase);
+        if (energyPulse > 0.7) {
+          var glow = (energyPulse - 0.7) / 0.3;
+          ctx.beginPath();
+          ctx.arc(0, 0, 3 + glow * 4, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(201,168,76,' + (glow * 0.35) + ')';
+          ctx.fill();
+
+          // Emitir partícula de energia
+          if (energyPulse > 0.95 && Math.random() < 0.1) {
+            var a = Math.random() * Math.PI * 2;
+            energyBursts.push({
+              x: m.x + Math.cos(a) * rx * 0.5,
+              y: m.y + Math.sin(a) * ry * 0.5,
+              vx: Math.cos(a) * 0.8,
+              vy: Math.sin(a) * 0.8,
+              life: 1,
+              r: 2 + Math.random() * 2
+            });
+          }
+        }
+
+        ctx.restore();
+      }
+
+      function drawConnections(t) {
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[i].x - particles[j].x;
+            var dy = particles[i].y - particles[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 90) {
+              var alpha = (1 - dist / 90) * 0.08;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(74,124,89,' + alpha + ')';
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function drawEnergyBursts() {
+        for (var i = energyBursts.length - 1; i >= 0; i--) {
+          var b = energyBursts[i];
+          b.x += b.vx;
+          b.y += b.vy;
+          b.life -= 0.012;
+          if (b.life <= 0) {
+            energyBursts.splice(i, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r * b.life, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(201,168,76,' + (b.life * 0.3) + ')';
+          ctx.fill();
+        }
+      }
+
+      function update() {
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx + Math.sin(time * 0.3 + p.phase) * 0.1;
+          p.y += p.vy + Math.cos(time * 0.25 + p.phase) * 0.08;
+          if (p.x < -20) p.x = W + 20;
+          if (p.x > W + 20) p.x = -20;
+          if (p.y < -20) p.y = H + 20;
+          if (p.y > H + 20) p.y = -20;
+        }
+        for (var j = 0; j < mitochondria.length; j++) {
+          var m = mitochondria[j];
+          m.x += m.vx + Math.sin(time * 0.15 + m.phase) * 0.12;
+          m.y += m.vy + Math.cos(time * 0.12 + m.phase) * 0.1;
+          m.angle += m.rotSpeed;
+          // Manter dentro da tela
+          if (m.x < 40) m.vx += 0.01;
+          if (m.x > W - 40) m.vx -= 0.01;
+          if (m.y < 40) m.vy += 0.01;
+          if (m.y > H - 40) m.vy -= 0.01;
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        time += 0.016;
+        update();
+        drawConnections(time);
+        for (var i = 0; i < particles.length; i++) {
+          drawParticle(particles[i], time);
+        }
+        for (var j = 0; j < mitochondria.length; j++) {
+          drawMitochondria(mitochondria[j], time);
+        }
+        drawEnergyBursts();
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      createParticles();
+      createMitochondria();
+      draw();
+
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          resize();
+          createParticles();
+          createMitochondria();
+        }, 200);
+      });
+    })();
+  </script>
+
+</body>
+</html>
