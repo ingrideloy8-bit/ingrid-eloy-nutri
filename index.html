@@ -829,8 +829,28 @@
       </div>
 
       <div class="form-grupo fade-in">
-        <label for="whatsapp">WhatsApp (com DDD)</label>
-        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+        <label for="whatsapp">WhatsApp</label>
+        <div style="display:flex;gap:8px;">
+          <select id="ddi" style="width:120px;flex-shrink:0;padding:16px 10px;font-family:'Nunito',sans-serif;font-size:1rem;color:var(--texto);background:white;border:1.5px solid var(--borda);border-radius:12px;outline:none;-webkit-appearance:none;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A6A5A' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 8px center;padding-right:28px;">
+            <option value="+55">&#127463;&#127479; +55</option>
+            <option value="+1">&#127482;&#127480; +1</option>
+            <option value="+351">&#127477;&#127481; +351</option>
+            <option value="+44">&#127468;&#127463; +44</option>
+            <option value="+34">&#127466;&#127480; +34</option>
+            <option value="+39">&#127470;&#127481; +39</option>
+            <option value="+33">&#127467;&#127479; +33</option>
+            <option value="+49">&#127465;&#127466; +49</option>
+            <option value="+41">&#127464;&#127469; +41</option>
+            <option value="+81">&#127471;&#127477; +81</option>
+            <option value="+61">&#127462;&#127482; +61</option>
+            <option value="+971">&#127462;&#127466; +971</option>
+            <option value="+353">&#127470;&#127466; +353</option>
+            <option value="+31">&#127475;&#127473; +31</option>
+            <option value="+244">&#127462;&#127476; +244</option>
+            <option value="+258">&#127474;&#127487; +258</option>
+          </select>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="00 00000-0000" required style="flex:1;">
+        </div>
       </div>
 
       <div class="form-grupo fade-in">
@@ -977,14 +997,7 @@
     // ==================== MASCARA WHATSAPP ====================
     document.getElementById('whatsapp').addEventListener('input', function(e) {
       var v = e.target.value.replace(/\D/g, '');
-      if (v.length > 11) v = v.slice(0, 11);
-      if (v.length > 6) {
-        v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-      } else if (v.length > 2) {
-        v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-      } else if (v.length > 0) {
-        v = '(' + v;
-      }
+      if (v.length > 13) v = v.slice(0, 13);
       e.target.value = v;
     });
 
@@ -997,7 +1010,8 @@
       btn.disabled = true;
 
       var nome = document.getElementById('nome').value.trim();
-      var whatsapp = document.getElementById('whatsapp').value.trim();
+      var ddi = document.getElementById('ddi').value;
+      var whatsapp = ddi + ' ' + document.getElementById('whatsapp').value.trim();
       var idade = document.getElementById('idade').value;
       var cidade = document.getElementById('cidade').value.trim();
       var como = document.getElementById('como').value;
