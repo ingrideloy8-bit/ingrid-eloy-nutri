@@ -818,6 +818,10 @@
     </p>
 
     <form id="formMCM" onsubmit="enviarFormulario(event)">
+      <input type="hidden" name="_subject" value="Novo lead MCM">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" id="formNext" value="">
 
       <div class="form-grupo fade-in">
         <label for="nome">Seu nome</label>
@@ -1004,31 +1008,28 @@
         queixas.push(cb.value);
       });
 
-      // Enviar via FormSubmit (chega no email da Ingrid)
-      fetch('https://formsubmit.co/ajax/ingrideloy8@gmail.com', {
+      // Montar FormData para enviar via FormSubmit
+      var formData = new FormData();
+      formData.append('Nome', nome);
+      formData.append('WhatsApp', whatsapp);
+      formData.append('Idade', idade + ' anos');
+      formData.append('Cidade', cidade);
+      formData.append('Queixas', queixas.join(', ') || 'Nenhuma marcada');
+      formData.append('Como encontrou', como || 'N\u00e3o informou');
+      formData.append('Observacoes', obs || 'Nenhuma');
+      formData.append('Data', new Date().toLocaleString('pt-BR'));
+      formData.append('_subject', 'Novo lead MCM: ' + nome);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
+
+      fetch('https://formsubmit.co/ingrideloy8@gmail.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: 'Novo lead MCM: ' + nome,
-          Nome: nome,
-          WhatsApp: whatsapp,
-          Idade: idade + ' anos',
-          Cidade: cidade,
-          Queixas: queixas.join(', ') || 'Nenhuma marcada',
-          'Como encontrou': como || 'N\u00e3o informou',
-          'Observa\u00e7\u00f5es': obs || 'Nenhuma',
-          'Data do envio': new Date().toLocaleString('pt-BR')
-        })
+        body: formData
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      .then(function() {
         mostrarConfirmacao(nome);
       })
       .catch(function() {
-        // Se falhar, mostra confirmacao mesmo assim (o lead nao se perde da experiencia)
         mostrarConfirmacao(nome);
       });
     }
