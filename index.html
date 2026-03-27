@@ -831,24 +831,23 @@
       <div class="form-grupo fade-in">
         <label for="whatsapp">WhatsApp</label>
         <div style="display:flex;gap:8px;">
-          <select id="ddi" style="width:120px;flex-shrink:0;padding:16px 10px;font-family:'Nunito',sans-serif;font-size:1rem;color:var(--texto);background:white;border:1.5px solid var(--borda);border-radius:12px;outline:none;-webkit-appearance:none;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237A6A5A' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 8px center;padding-right:28px;">
-            <option value="+55">&#127463;&#127479; +55</option>
-            <option value="+1">&#127482;&#127480; +1</option>
-            <option value="+351">&#127477;&#127481; +351</option>
-            <option value="+44">&#127468;&#127463; +44</option>
-            <option value="+34">&#127466;&#127480; +34</option>
-            <option value="+39">&#127470;&#127481; +39</option>
-            <option value="+33">&#127467;&#127479; +33</option>
-            <option value="+49">&#127465;&#127466; +49</option>
-            <option value="+41">&#127464;&#127469; +41</option>
-            <option value="+81">&#127471;&#127477; +81</option>
-            <option value="+61">&#127462;&#127482; +61</option>
-            <option value="+971">&#127462;&#127466; +971</option>
-            <option value="+353">&#127470;&#127466; +353</option>
-            <option value="+31">&#127475;&#127473; +31</option>
-            <option value="+244">&#127462;&#127476; +244</option>
-            <option value="+258">&#127474;&#127487; +258</option>
+          <select id="ddi" style="width:130px;flex-shrink:0;padding:16px 10px;font-family:'Nunito',sans-serif;font-size:0.9rem;color:var(--texto);background:white;border:1.5px solid var(--borda);border-radius:12px;outline:none;">
           </select>
+          <script>
+          (function(){
+            var paises = [
+              ["+55","BR","Brasil"],["+93","AF","Afeganist\u00e3o"],["+355","AL","Alb\u00e2nia"],["+213","DZ","Arg\u00e9lia"],["+376","AD","Andorra"],["+244","AO","Angola"],["+54","AR","Argentina"],["+374","AM","Arm\u00eania"],["+61","AU","Austr\u00e1lia"],["+43","AT","\u00c1ustria"],["+994","AZ","Azerbaij\u00e3o"],["+973","BH","Bahrein"],["+880","BD","Bangladesh"],["+375","BY","Bielorr\u00fassia"],["+32","BE","B\u00e9lgica"],["+501","BZ","Belize"],["+229","BJ","Benin"],["+591","BO","Bol\u00edvia"],["+387","BA","B\u00f3snia"],["+267","BW","Botsuana"],["+673","BN","Brunei"],["+359","BG","Bulg\u00e1ria"],["+226","BF","Burkina Faso"],["+257","BI","Burundi"],["+855","KH","Camboja"],["+237","CM","Camar\u00f5es"],["+1","CA","Canad\u00e1"],["+238","CV","Cabo Verde"],["+236","CF","Rep. Centro-Africana"],["+235","TD","Chade"],["+56","CL","Chile"],["+86","CN","China"],["+57","CO","Col\u00f4mbia"],["+269","KM","Comores"],["+242","CG","Congo"],["+243","CD","Congo (RDC)"],["+506","CR","Costa Rica"],["+385","HR","Cro\u00e1cia"],["+53","CU","Cuba"],["+357","CY","Chipre"],["+420","CZ","Tch\u00e9quia"],["+45","DK","Dinamarca"],["+253","DJ","Djibuti"],["+593","EC","Equador"],["+20","EG","Egito"],["+503","SV","El Salvador"],["+240","GQ","Guin\u00e9 Equatorial"],["+291","ER","Eritreia"],["+372","EE","Est\u00f4nia"],["+268","SZ","Essuat\u00edni"],["+251","ET","Eti\u00f3pia"],["+358","FI","Finl\u00e2ndia"],["+33","FR","Fran\u00e7a"],["+241","GA","Gab\u00e3o"],["+220","GM","G\u00e2mbia"],["+995","GE","Ge\u00f3rgia"],["+49","DE","Alemanha"],["+233","GH","Gana"],["+30","GR","Gr\u00e9cia"],["+502","GT","Guatemala"],["+224","GN","Guin\u00e9"],["+245","GW","Guin\u00e9-Bissau"],["+592","GY","Guiana"],["+509","HT","Haiti"],["+504","HN","Honduras"],["+852","HK","Hong Kong"],["+36","HU","Hungria"],["+354","IS","Isl\u00e2ndia"],["+91","IN","\u00cdndia"],["+62","ID","Indon\u00e9sia"],["+98","IR","Ir\u00e3"],["+964","IQ","Iraque"],["+353","IE","Irlanda"],["+972","IL","Israel"],["+39","IT","It\u00e1lia"],["+225","CI","Costa do Marfim"],["+81","JP","Jap\u00e3o"],["+962","JO","Jord\u00e2nia"],["+7","KZ","Cazaquist\u00e3o"],["+254","KE","Qu\u00eania"],["+965","KW","Kuwait"],["+996","KG","Quirguist\u00e3o"],["+856","LA","Laos"],["+371","LV","Let\u00f4nia"],["+961","LB","L\u00edbano"],["+266","LS","Lesoto"],["+231","LR","Lib\u00e9ria"],["+218","LY","L\u00edbia"],["+423","LI","Liechtenstein"],["+370","LT","Litu\u00e2nia"],["+352","LU","Luxemburgo"],["+853","MO","Macau"],["+261","MG","Madagasca"],["+265","MW","Malawi"],["+60","MY","Mal\u00e1sia"],["+960","MV","Maldivas"],["+223","ML","Mali"],["+356","MT","Malta"],["+222","MR","Maurit\u00e2nia"],["+230","MU","Maur\u00edcio"],["+52","MX","M\u00e9xico"],["+373","MD","Mold\u00e1via"],["+377","MC","M\u00f4naco"],["+976","MN","Mong\u00f3lia"],["+382","ME","Montenegro"],["+212","MA","Marrocos"],["+258","MZ","Mo\u00e7ambique"],["+95","MM","Mianmar"],["+264","NA","Nam\u00edbia"],["+977","NP","Nepal"],["+31","NL","Holanda"],["+64","NZ","Nova Zel\u00e2ndia"],["+505","NI","Nicar\u00e1gua"],["+227","NE","N\u00edger"],["+234","NG","Nig\u00e9ria"],["+850","KP","Coreia do Norte"],["+389","MK","Maced\u00f4nia do Norte"],["+47","NO","Noruega"],["+968","OM","Om\u00e3"],["+92","PK","Paquist\u00e3o"],["+970","PS","Palestina"],["+507","PA","Panam\u00e1"],["+675","PG","Papua Nova Guin\u00e9"],["+595","PY","Paraguai"],["+51","PE","Peru"],["+63","PH","Filipinas"],["+48","PL","Pol\u00f4nia"],["+351","PT","Portugal"],["+974","QA","Catar"],["+40","RO","Rom\u00eania"],["+7","RU","R\u00fassia"],["+250","RW","Ruanda"],["+966","SA","Ar\u00e1bia Saudita"],["+221","SN","Senegal"],["+381","RS","S\u00e9rvia"],["+65","SG","Singapura"],["+421","SK","Eslov\u00e1quia"],["+386","SI","Eslov\u00eania"],["+252","SO","Som\u00e1lia"],["+27","ZA","\u00c1frica do Sul"],["+82","KR","Coreia do Sul"],["+211","SS","Sud\u00e3o do Sul"],["+34","ES","Espanha"],["+94","LK","Sri Lanka"],["+249","SD","Sud\u00e3o"],["+597","SR","Suriname"],["+46","SE","Su\u00e9cia"],["+41","CH","Su\u00ed\u00e7a"],["+963","SY","S\u00edria"],["+886","TW","Taiwan"],["+992","TJ","Tajiquist\u00e3o"],["+255","TZ","Tanz\u00e2nia"],["+66","TH","Tail\u00e2ndia"],["+670","TL","Timor-Leste"],["+228","TG","Togo"],["+216","TN","Tun\u00edsia"],["+90","TR","Turquia"],["+993","TM","Turcomenist\u00e3o"],["+256","UG","Uganda"],["+380","UA","Ucr\u00e2nia"],["+971","AE","Emirados \u00c1rabes"],["+44","GB","Reino Unido"],["+1","US","EUA"],["+598","UY","Uruguai"],["+998","UZ","Uzbequist\u00e3o"],["+58","VE","Venezuela"],["+84","VN","Vietn\u00e3"],["+967","YE","I\u00eamen"],["+260","ZM","Z\u00e2mbia"],["+263","ZW","Zimb\u00e1bue"]
+            ];
+            var sel = document.getElementById('ddi');
+            paises.forEach(function(p){
+              var opt = document.createElement('option');
+              opt.value = p[0];
+              opt.textContent = p[2] + ' ' + p[0];
+              if (p[0] === '+55') opt.selected = true;
+              sel.appendChild(opt);
+            });
+          })();
+          </script>
           <input type="tel" id="whatsapp" name="whatsapp" placeholder="00 00000-0000" required style="flex:1;">
         </div>
       </div>
