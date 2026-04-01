@@ -808,6 +808,11 @@
       <div class="sintoma-texto">Toma medicamento para ansiedade ou tireoide, e ningu&eacute;m nunca olhou como isso afeta a sua fome e o seu peso.</div>
     </div>
 
+    <div class="sintoma-item fade-in" onclick="toggleSintoma(this)">
+      <div class="sintoma-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="sintoma-texto">Usa ou usou caneta emagrecedora e sente que perdeu m&uacute;sculo, que o resultado est&aacute; escapando ou que a fome voltou pior do que antes.</div>
+    </div>
+
     <div class="sintomas-resultado" id="sintomasResultado">
       Esses sintomas n&atilde;o s&atilde;o falhas suas. S&atilde;o sinais de um metabolismo que perdeu flexibilidade, e &eacute; exatamente isso que eu investigo na consulta.
     </div>
@@ -975,6 +980,12 @@
             <input type="checkbox" name="queixa" value="SOP ou resist&ecirc;ncia insul&iacute;nica">
             <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
             <span class="form-check-texto">SOP ou resist&ecirc;ncia insul&iacute;nica</span>
+          </label>
+
+          <label class="form-check" onclick="toggleCheck(this)">
+            <input type="checkbox" name="queixa" value="Uso de canetas emagrecedoras - proteger resultado ou recuperar massa magra">
+            <div class="form-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <span class="form-check-texto">Est&aacute; em uso ou j&aacute; usou medica&ccedil;&otilde;es como Ozempic, Wegovy, Mounjaro, Saxenda, Rybelsus ou Retatrutida, e precisa proteger o resultado atingido e/ou recuperar massa magra perdida</span>
           </label>
 
         </div>
